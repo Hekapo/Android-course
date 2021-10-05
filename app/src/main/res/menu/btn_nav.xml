@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_vk_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/navigation_services"
+        android:icon="@drawable/ic_vk_services"
+        android:title="@string/services" />
+
+    <item
+        android:id="@+id/navigation_messenger"
+        android:icon="@drawable/ic_vk_messenger"
+        android:title="@string/messengers" />
+
+    <item
+        android:id="@+id/navigation_clips"
+        android:icon="@drawable/ic_vk_clips"
+        android:title="@string/navigation_clips" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_vk_me"
+        android:title="@string/profile" />
+
+
+</menu>

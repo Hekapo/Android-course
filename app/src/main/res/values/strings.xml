@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">FirstLesson</string>
+    <string name="home">Главная</string>
+    <string name="services">Сервисы</string>
+    <string name="messengers">Месседжер</string>
+    <string name="navigation_clips">Клипы</string>
+    <string name="profile">Профиль</string>
+    <string name="for_you">Для вас</string>
+    <string name="photo">Фото</string>
+    <string name="create_post">Создать запись</string>
+    <string name="iiiskk">iiiskk</string>
+    <string name="edit">Редактировать</string>
+    <string name="iskandar_ihsanov">Iskandar Ihsanov</string>
+    <string name="online">online</string>
+    <string name="History">История</string>
+    <string name="inf">Подробная информация</string>
+    <string name="job">Указать место работы</string>
+    <string name="study">Указать место учебы</string>
+    <string name="FRIENDS">ДРУЗЬЯ</string>
+    <string name="_34">34</string>
+    <string name="photos">ФОТОГРАФИИ</string>
+    <string name="qr_code">qr_code</string>
+    <string name="_1991199">1991199 падпещиков</string>
+    <string name="good">good</string>
+    <string name="menu">menu</string>
+    <string name="my_photo">my_photo</string>
+    <string name="iskandar_nihsanov">Iskandar\nIhsanov</string>
+    <string name="pрoto">Фото</string>
+    <string name="clip">Клип</string>
+    <string name="record">Запись</string>
+    <string name="enter_mood">enter mood</string>
 </resources>
