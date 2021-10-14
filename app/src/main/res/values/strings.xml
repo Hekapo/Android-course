@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FirstLesson</string>
+    <string name="confirm">confirm</string>
+    <string name="enter_message">Enter message...</string>
+    <string name="take_photo">take photo</string>
+    <string name="send_message">send message</string>
+    <string name="send_answer">send answer</string>
+    <string name="enter_answer">Enter answer...</string>
+    <string name="hello">Hello</string>
 </resources>
