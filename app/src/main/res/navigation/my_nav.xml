@@ -9,5 +9,22 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.example.firstlesson.fragments.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_simpleItemListFragment"
+            app:destination="@id/simpleItemListFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.example.firstlesson.fragments.ItemListFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
+    <fragment
+        android:id="@+id/simpleItemListFragment"
+        android:name="com.example.firstlesson.fragments.SimpleItemListFragment"
+        android:label="fragment_simple_item_list"
+        tools:layout="@layout/fragment_simple_item_list" />
 </navigation>
