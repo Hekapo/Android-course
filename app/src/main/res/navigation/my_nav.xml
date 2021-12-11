@@ -3,11 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/homeScreenFragment">
+    app:startDestination="@id/musicListFragment">
 
     <fragment
-        android:id="@+id/homeScreenFragment"
-        android:name="com.example.firstlesson.fragments.HomeScreenFragment"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        android:id="@+id/musicListFragment"
+        android:name="com.example.firstlesson.fragments.MusicListScreenFragment"
+        tools:layout="@layout/fragment_music_list_screen">
+        <action
+            android:id="@+id/action_musicListScreenFragment_to_musicScreenFragment"
+            app:destination="@id/musicScreenFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top"
+            app:popEnterAnim="@anim/from_top"
+            app:popExitAnim="@anim/to_bottom" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicScreenFragment"
+        android:name="com.example.firstlesson.fragments.MusicScreenFragment"
+        tools:layout="@layout/fragment_music_screen">
+        <action
+            android:id="@+id/action_musicScreenFragment_to_musicListScreenFragment"
+            app:destination="@id/musicListFragment"
+            app:enterAnim="@anim/from_top"
+            app:exitAnim="@anim/to_bottom" />
+    </fragment>
 </navigation>

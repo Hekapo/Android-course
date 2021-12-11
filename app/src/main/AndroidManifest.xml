@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".media_player.MusicService"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name=".SongReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
