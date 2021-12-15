@@ -26,7 +26,7 @@ interface ToDoDAO {
 //    fun isContains(query: String): List<ToDo>
 
     @Query(
-        "SELECT rowid, todo_fts.title, todo_fts.description  FROM todo JOIN todo_fts ON todo.rowid == todo_fts.rowid WHERE todo_fts.title MATCH :search ORDER BY rowid"
+        "SELECT rowid, todo_fts.title, todo_fts.description, date  FROM todo JOIN todo_fts ON todo.rowid == todo_fts.rowid WHERE todo_fts.title MATCH :search ORDER BY rowid"
     )
     fun filtered(search: String): ToDo?
 }

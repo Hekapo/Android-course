@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
+import java.util.*
 
 class CreateToDoFragment : Fragment(), CreateToDoView {
 
@@ -32,6 +33,8 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val calendar = Calendar.getInstance()
+
 
         val args = arguments?.getLong("ID")
 
@@ -42,7 +45,9 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
         binding.createBtn.setOnClickListener {
             val title = binding.titleEt.text.toString()
             val desc = binding.descEt.text.toString()
-            presenter.createToDo(title, desc)
+            val date = calendar.time
+
+            presenter.createToDo(title, desc, date)
 
 
         }
@@ -50,7 +55,8 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
         binding.updateBtn.setOnClickListener {
             val title = binding.titleEt.text.toString()
             val desc = binding.descEt.text.toString()
-            presenter.updateToDo(title, desc,args)
+            val date = calendar.time
+            presenter.updateToDo(title, desc, args, date)
 
 
         }

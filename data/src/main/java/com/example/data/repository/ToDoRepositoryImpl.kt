@@ -13,7 +13,7 @@ class ToDoRepositoryImpl(private val dao: ToDoDAO) : ToDoRepository {
     override fun filter(title: String): ToDoItem? {
         val item = dao.filtered(title)
         if (item != null) {
-            return ToDoItem(item.id, item.title, item.description)
+            return ToDoItem(item.id, item.title, item.description,item.date)
         }
         return null
 //        val list = mutableListOf<ToDoItem>()
@@ -34,7 +34,7 @@ class ToDoRepositoryImpl(private val dao: ToDoDAO) : ToDoRepository {
     override fun getAllToDo(): List<ToDoItem> {
         val list = mutableListOf<ToDoItem>()
         dao.getAllToDo().forEach {
-            list.add(ToDoItem(it.id, it.title, it.description))
+            list.add(ToDoItem(it.id, it.title, it.description,it.date))
         }
 
         return list
