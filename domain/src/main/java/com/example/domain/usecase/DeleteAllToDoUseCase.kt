@@ -1,4 +1,4 @@
-package com.example.domain.domain
+package com.example.domain.usecase
 
 import com.example.domain.repository.ToDoRepository
 

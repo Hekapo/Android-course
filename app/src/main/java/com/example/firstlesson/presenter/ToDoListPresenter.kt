@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import com.example.data.repository.ToDoRepositoryImpl
 import com.example.data.room.ToDoDatabase
-import com.example.domain.domain.DeleteAllToDoUseCase
-import com.example.domain.domain.DeleteOneToDoUseCase
-import com.example.domain.domain.GetAllToDoUseCase
+import com.example.domain.usecase.DeleteAllToDoUseCase
+import com.example.domain.usecase.DeleteOneToDoUseCase
+import com.example.domain.usecase.GetAllToDoUseCase
 import com.example.domain.model.ToDoItem
 import com.example.firstlesson.view.ToDoListView
 

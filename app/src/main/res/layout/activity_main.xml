@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_item" />
+        app:menu="@menu/menu_item"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"

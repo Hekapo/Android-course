@@ -9,7 +9,7 @@ import com.example.data.room.dao.ToDoDAO
 import com.example.data.room.entity.ToDo
 import com.example.data.room.entity.ToDoFts
 
-@Database(entities = [ToDo::class, ToDoFts::class], version = 2)
+@Database(entities = [ToDo::class, ToDoFts::class], version = 1)
 @TypeConverters(Converter::class)
 abstract class ToDoDatabase : RoomDatabase() {
 

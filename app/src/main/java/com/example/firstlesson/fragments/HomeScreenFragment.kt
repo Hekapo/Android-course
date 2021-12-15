@@ -23,6 +23,7 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
     private val presenter by lazy {
         ToDoListPresenter(this, requireContext())
     }
+
     private val binding: FragmentHomeScreenBinding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentHomeScreenBinding.inflate(layoutInflater)
     }

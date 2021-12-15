@@ -15,4 +15,6 @@ interface ToDoRepository {
     fun deleteToDo(toDoItem: ToDoItem)
 
     fun filter(title: String): ToDoItem?
+
+     fun getOneToDo(id: Long?): ToDoItem
 }

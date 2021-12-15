@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.domain.model.ToDoItem
 import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
@@ -35,12 +36,8 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
         super.onViewCreated(view, savedInstanceState)
         val calendar = Calendar.getInstance()
 
-
         val args = arguments?.getLong("ID")
-
-        if (args == null) {
-            binding.createBtn.visibility = View.VISIBLE
-        }
+        presenter.getOneToDo(args)
 
         binding.createBtn.setOnClickListener {
             val title = binding.titleEt.text.toString()
@@ -49,7 +46,6 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
 
             presenter.createToDo(title, desc, date)
 
-
         }
 
         binding.updateBtn.setOnClickListener {
@@ -57,7 +53,6 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
             val desc = binding.descEt.text.toString()
             val date = calendar.time
             presenter.updateToDo(title, desc, args, date)
-
 
         }
 
@@ -72,5 +67,13 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
 
     }
 
+    override fun showButton() {
+        binding.createBtn.visibility = View.VISIBLE
+    }
+
+    override fun setInitialText(todoItem: ToDoItem) {
+        binding.descEt.setText(todoItem.description)
+        binding.titleEt.setText(todoItem.title)
+    }
 
 }
