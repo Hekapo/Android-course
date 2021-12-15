@@ -3,16 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_account_circle.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_next.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_pause.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_play.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/drawable/ic_prev.xml" value="0.23201754385964912" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/activity_secon.xml" value="0.21842105263157896" />
         <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/activity_two.xml" value="0.21842105263157896" />
-        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_home_screen.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_add_news_dialog.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_create_to_do.xml" value="0.20657894736842106" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_details_screen.xml" value="0.264" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_home_screen.xml" value="0.2" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_item_list.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_list_screen.xml" value="0.21842105263157896" />
         <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_messages_screen.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_music_list_screen.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_music_screen.xml" value="0.264" />
         <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_notification_screen.xml" value="0.21842105263157896" />
         <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_settings_screen.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/fragment_simple_item_list.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/one_item.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/one_music_item.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/one_planet.xml" value="0.4" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/one_waifu.xml" value="0.264" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/todo_item.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/layout/view_pager_item.xml" value="0.20657894736842106" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/menu/bottom_menu.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/menu/menu_item.xml" value="0.21842105263157896" />
+        <entry key="..\:/AndroidCourseITIS/FirstLesson/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.23201754385964912" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
