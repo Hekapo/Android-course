@@ -13,6 +13,7 @@ import com.example.firstlesson.R
 import com.example.firstlesson.adapter.ToDoAdapter
 import com.example.firstlesson.databinding.FragmentHomeScreenBinding
 import com.example.firstlesson.presenter.ToDoListPresenter
+import com.example.firstlesson.utils.Constants.TODO_ID
 import com.example.firstlesson.utils.hideKeyboard
 import com.example.firstlesson.view.ToDoListView
 
@@ -62,7 +63,7 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
 
     override fun onClick(toDoItem: ToDoItem) {
         val bundle = Bundle()
-        bundle.putLong("ID", toDoItem.id)
+        bundle.putLong(TODO_ID, toDoItem.id)
         presenter.navigate(R.id.action_homeScreenFragment_to_createToDoFragment, bundle)
 
     }

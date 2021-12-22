@@ -14,6 +14,7 @@ import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
 import com.example.data.DatabaseProvider
+import com.example.firstlesson.utils.Constants.TODO_ID
 import java.util.*
 
 class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
@@ -39,7 +40,7 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
         super.onViewCreated(view, savedInstanceState)
         val calendar = Calendar.getInstance()
 
-        val args = arguments?.getLong("ID")
+        val args = arguments?.getLong(TODO_ID)
         presenter.getOneToDo(args)
 
         binding.createBtn.setOnClickListener {
