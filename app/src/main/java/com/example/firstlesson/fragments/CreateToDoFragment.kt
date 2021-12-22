@@ -7,20 +7,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.data.room.ToDoDatabase
+import com.example.data.room.dao.ToDoDAO
 import com.example.domain.model.ToDoItem
 import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
+import com.example.data.DatabaseProvider
 import java.util.*
 
-class CreateToDoFragment : Fragment(), CreateToDoView {
+class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
 
     private val binding: FragmentCreateToDoBinding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentCreateToDoBinding.inflate(layoutInflater)
     }
 
     private val presenter by lazy {
-        CreateToDoPresenter(this, requireContext())
+        CreateToDoPresenter(this, this)
     }
 
     override fun onCreateView(
@@ -74,6 +77,14 @@ class CreateToDoFragment : Fragment(), CreateToDoView {
     override fun setInitialText(todoItem: ToDoItem) {
         binding.descEt.setText(todoItem.description)
         binding.titleEt.setText(todoItem.title)
+    }
+
+    override fun provideDataBase(): ToDoDatabase {
+        return ToDoDatabase.invoke(requireContext())
+    }
+
+    override fun provideDao(): ToDoDAO {
+        return provideDataBase().toDoDAO()
     }
 
 }

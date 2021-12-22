@@ -1,28 +1,27 @@
 package com.example.firstlesson.presenter
 
-import android.content.Context
+import com.example.data.DatabaseProvider
 import com.example.data.repository.ToDoRepositoryImpl
-import com.example.data.room.ToDoDatabase
 import com.example.domain.usecase.GetOneToDoUseCase
 import com.example.domain.usecase.SaveToDoUseCase
 import com.example.domain.usecase.UpdateToDoUseCase
 import com.example.firstlesson.view.CreateToDoView
 import java.util.*
 
-class CreateToDoPresenter(private val createToDoView: CreateToDoView, context: Context) {
-    private val repositoryImpl: ToDoRepositoryImpl
-    private val saveToDoUseCase: SaveToDoUseCase
-    private val updateToDoUseCase: UpdateToDoUseCase
-    private val getOneToDoUseCase: GetOneToDoUseCase
+class CreateToDoPresenter(
+    private val createToDoView: CreateToDoView,
+    private val databaseProvider: DatabaseProvider
+) {
 
-    init {
-        val dao = ToDoDatabase.invoke(context).toDoDAO()
-        repositoryImpl = ToDoRepositoryImpl(dao)
-        saveToDoUseCase = SaveToDoUseCase(repositoryImpl)
-        updateToDoUseCase = UpdateToDoUseCase(repositoryImpl)
-        getOneToDoUseCase = GetOneToDoUseCase(repositoryImpl)
-
+    private val repository by lazy {
+        databaseProvider.provideDataBase()
+        val dao = databaseProvider.provideDao()
+        ToDoRepositoryImpl(dao)
     }
+
+    private val saveToDoUseCase by lazy { SaveToDoUseCase(repository) }
+    private val updateToDoUseCase by lazy { UpdateToDoUseCase(repository) }
+    private val getOneToDoUseCase by lazy { GetOneToDoUseCase(repository) }
 
     fun getOneToDo(id: Long?) {
         if (id == null) {

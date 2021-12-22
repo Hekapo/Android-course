@@ -5,6 +5,9 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.data.DatabaseProvider
+import com.example.data.room.ToDoDatabase
+import com.example.data.room.dao.ToDoDAO
 import com.example.domain.model.ToDoItem
 import com.example.firstlesson.R
 import com.example.firstlesson.adapter.ToDoAdapter
@@ -14,14 +17,14 @@ import com.example.firstlesson.utils.hideKeyboard
 import com.example.firstlesson.view.ToDoListView
 
 class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
-    ToDoAdapter.OnToDoDelete {
+    ToDoAdapter.OnToDoDelete, DatabaseProvider {
 
     private val todoAdapter by lazy {
         ToDoAdapter(requireContext(), this, this)
     }
 
     private val presenter by lazy {
-        ToDoListPresenter(this, requireContext())
+        ToDoListPresenter(this, this)
     }
 
     private val binding: FragmentHomeScreenBinding by lazy(LazyThreadSafetyMode.NONE) {
@@ -104,4 +107,13 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
     override fun onDelete(toDoItem: ToDoItem) {
         presenter.delete(toDoItem)
     }
+
+    override fun provideDataBase(): ToDoDatabase {
+        return ToDoDatabase.invoke(requireContext())
+    }
+
+    override fun provideDao(): ToDoDAO {
+        return provideDataBase().toDoDAO()
+    }
+
 }

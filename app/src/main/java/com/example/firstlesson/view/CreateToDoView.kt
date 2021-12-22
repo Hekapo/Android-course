@@ -9,5 +9,4 @@ interface CreateToDoView {
     fun showButton()
     fun setInitialText(todoItem: ToDoItem)
 
-
 }

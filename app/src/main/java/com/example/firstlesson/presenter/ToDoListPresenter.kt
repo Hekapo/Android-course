@@ -1,28 +1,28 @@
 package com.example.firstlesson.presenter
 
-import android.content.Context
 import android.os.Bundle
+import com.example.data.DatabaseProvider
 import com.example.data.repository.ToDoRepositoryImpl
-import com.example.data.room.ToDoDatabase
+import com.example.domain.model.ToDoItem
 import com.example.domain.usecase.DeleteAllToDoUseCase
 import com.example.domain.usecase.DeleteOneToDoUseCase
 import com.example.domain.usecase.GetAllToDoUseCase
-import com.example.domain.model.ToDoItem
 import com.example.firstlesson.view.ToDoListView
 
-class ToDoListPresenter(private val toDoListView: ToDoListView, context: Context) {
-    private val repositoryImpl: ToDoRepositoryImpl
-    private val getAllToDoUseCase: GetAllToDoUseCase
-    private val deleteAllToDoUseCase: DeleteAllToDoUseCase
-    private val deleteOneToDoUseCase: DeleteOneToDoUseCase
+class ToDoListPresenter(
+    private val toDoListView: ToDoListView,
+    private val databaseProvider: DatabaseProvider
+) {
 
-    init {
-        val dao = ToDoDatabase.invoke(context)
-        repositoryImpl = ToDoRepositoryImpl(dao.toDoDAO())
-        getAllToDoUseCase = GetAllToDoUseCase(repositoryImpl)
-        deleteAllToDoUseCase = DeleteAllToDoUseCase(repositoryImpl)
-        deleteOneToDoUseCase = DeleteOneToDoUseCase(repositoryImpl)
+    private val repositoryImpl by lazy {
+        databaseProvider.provideDataBase()
+        val dao = databaseProvider.provideDao()
+        ToDoRepositoryImpl(dao)
     }
+
+    private val getAllToDoUseCase by lazy { GetAllToDoUseCase(repositoryImpl) }
+    private val deleteAllToDoUseCase by lazy { DeleteAllToDoUseCase(repositoryImpl) }
+    private val deleteOneToDoUseCase by lazy { DeleteOneToDoUseCase(repositoryImpl) }
 
     fun loadToDo() {
         val listToDo = getAllToDoUseCase.execute()
@@ -57,8 +57,6 @@ class ToDoListPresenter(private val toDoListView: ToDoListView, context: Context
         }
         toDoListView.showAllToDo(listToDo)
 
-
     }
-
 
 }

@@ -40,7 +40,6 @@ class ToDoAdapter(context: Context, onToDoClicked: OnToDoClicked, onToDoDelete: 
         fun onDelete(toDoItem: ToDoItem)
     }
 
-
     inner class ToDoHolder(val binding: TodoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             with(binding.root) {
