@@ -17,6 +17,7 @@ import com.example.firstlesson.view.CreateToDoView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import java.util.*
 
 class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
@@ -93,6 +94,11 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
 
     override fun provideDao(): ToDoDAO {
         return provideDataBase().toDoDAO()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        scope.cancel()
     }
 
 }
