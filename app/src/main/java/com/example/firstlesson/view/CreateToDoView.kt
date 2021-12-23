@@ -6,7 +6,8 @@ interface CreateToDoView {
 
     fun navigateBack()
     fun showToast(message: String)
-    fun showButton()
+    fun showCreateButton()
     fun setInitialText(todoItem: ToDoItem)
+    fun showUpdateButton()
 
 }

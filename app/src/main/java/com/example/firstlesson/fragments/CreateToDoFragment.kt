@@ -13,8 +13,7 @@ import com.example.domain.model.ToDoItem
 import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
-import com.example.data.DatabaseProvider
-import com.example.firstlesson.utils.Constants.TODO_ID
+import com.example.data.room.DatabaseProvider
 import java.util.*
 
 class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
@@ -40,8 +39,7 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
         super.onViewCreated(view, savedInstanceState)
         val calendar = Calendar.getInstance()
 
-        val args = arguments?.getLong(TODO_ID)
-        presenter.getOneToDo(args)
+        val id = presenter.getOneToDo()
 
         binding.createBtn.setOnClickListener {
             val title = binding.titleEt.text.toString()
@@ -56,7 +54,7 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
             val title = binding.titleEt.text.toString()
             val desc = binding.descEt.text.toString()
             val date = calendar.time
-            presenter.updateToDo(title, desc, args, date)
+            presenter.updateToDo(title, desc, id, date)
 
         }
 
@@ -71,13 +69,17 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
 
     }
 
-    override fun showButton() {
+    override fun showCreateButton() {
         binding.createBtn.visibility = View.VISIBLE
     }
 
     override fun setInitialText(todoItem: ToDoItem) {
         binding.descEt.setText(todoItem.description)
         binding.titleEt.setText(todoItem.title)
+    }
+
+    override fun showUpdateButton() {
+        binding.updateBtn.visibility = View.VISIBLE
     }
 
     override fun provideDataBase(): ToDoDatabase {

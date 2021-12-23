@@ -1,15 +1,18 @@
 package com.example.data.mappers
 
 import com.example.data.room.entity.ToDo
+import com.example.data.storage.model.ToDoModel
 import com.example.domain.model.ToDoItem
 
-class ToDoMapper {
 
-    fun toDoToEntity(toDoItem: ToDoItem): ToDo {
-        return ToDo(toDoItem.id, toDoItem.title, toDoItem.description, toDoItem.date)
-    }
+fun ToDoItem.mapToEntity(): ToDo {
+    return ToDo(this.id, this.title, this.description, this.date)
+}
 
-    fun entityToToDo(toDo: ToDo): ToDoItem {
-        return ToDoItem(toDo.id, toDo.title, toDo.description, toDo.date)
-    }
+fun ToDo.mapEntityToToDoItem(): ToDoItem {
+    return ToDoItem(this.id, this.title, this.description, this.date)
+}
+
+fun ToDoItem.mapToToDoModel(): ToDoModel {
+    return ToDoModel(this.id, this.title, this.description, this.date)
 }

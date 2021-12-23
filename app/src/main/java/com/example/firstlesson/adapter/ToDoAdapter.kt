@@ -33,7 +33,7 @@ class ToDoAdapter(context: Context, onToDoClicked: OnToDoClicked, onToDoDelete: 
     }
 
     interface OnToDoClicked {
-        fun onClick(toDoItem: ToDoItem)
+        fun onClickToDo(toDoItem: ToDoItem)
     }
 
     interface OnToDoDelete {
@@ -45,7 +45,7 @@ class ToDoAdapter(context: Context, onToDoClicked: OnToDoClicked, onToDoDelete: 
             with(binding.root) {
                 setOnClickListener {
                     val item = getItem(layoutPosition)
-                    onToDoClicked?.onClick(item)
+                    onToDoClicked?.onClickToDo(item)
                 }
             }
             with(binding.deleteIv) {

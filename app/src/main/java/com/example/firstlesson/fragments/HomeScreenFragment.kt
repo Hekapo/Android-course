@@ -5,7 +5,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.data.DatabaseProvider
+import com.example.data.room.DatabaseProvider
 import com.example.data.room.ToDoDatabase
 import com.example.data.room.dao.ToDoDAO
 import com.example.domain.model.ToDoItem
@@ -13,7 +13,6 @@ import com.example.firstlesson.R
 import com.example.firstlesson.adapter.ToDoAdapter
 import com.example.firstlesson.databinding.FragmentHomeScreenBinding
 import com.example.firstlesson.presenter.ToDoListPresenter
-import com.example.firstlesson.utils.Constants.TODO_ID
 import com.example.firstlesson.utils.hideKeyboard
 import com.example.firstlesson.view.ToDoListView
 
@@ -47,6 +46,9 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        presenter.clearStorage()
+
         presenter.loadToDo()
 
         binding.addBtn.setOnClickListener {
@@ -61,10 +63,8 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
         }
     }
 
-    override fun onClick(toDoItem: ToDoItem) {
-        val bundle = Bundle()
-        bundle.putLong(TODO_ID, toDoItem.id)
-        presenter.navigate(R.id.action_homeScreenFragment_to_createToDoFragment, bundle)
+    override fun onClickToDo(toDoItem: ToDoItem) {
+        presenter.navigate(R.id.action_homeScreenFragment_to_createToDoFragment, toDoItem)
 
     }
 
@@ -72,8 +72,8 @@ class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
         renderData(toDoItem)
     }
 
-    override fun navigateTo(destination: Int, bundle: Bundle?) {
-        binding.root.findNavController().navigate(destination, bundle)
+    override fun navigateTo(destination: Int) {
+        binding.root.findNavController().navigate(destination)
     }
 
     override fun showEmptyData() {

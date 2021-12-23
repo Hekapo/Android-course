@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
     private val navController: NavController by lazy(LazyThreadSafetyMode.NONE) {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
 
         setSupportActionBar(binding.mainToolbar)
 

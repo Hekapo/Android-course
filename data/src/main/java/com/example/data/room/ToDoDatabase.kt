@@ -7,9 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.data.room.dao.ToDoDAO
 import com.example.data.room.entity.ToDo
-import com.example.data.room.entity.ToDoFts
 
-@Database(entities = [ToDo::class, ToDoFts::class], version = 1)
+@Database(entities = [ToDo::class], version = 1)
 @TypeConverters(Converter::class)
 abstract class ToDoDatabase : RoomDatabase() {
 

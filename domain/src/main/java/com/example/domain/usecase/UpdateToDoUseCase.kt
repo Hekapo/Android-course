@@ -6,32 +6,8 @@ import java.util.*
 
 class UpdateToDoUseCase(private val repository: ToDoRepository) {
 
-    fun execute(title: String, desc: String, args: Long?, date: Date): Boolean {
+    fun execute(title: String, desc: String, id: Long?, date: Date) =
+        id?.let { ToDoItem(it, title, desc, date) }?.let { repository.updateToDo(it) }
 
-        if (args != null) {
-            repository.updateToDo(ToDoItem(args, title, desc, date))
-            return true
-        } else {
-            val result = repository.filter(title)
-            val item = ToDoItem(0, title, desc, date)
-            if (result != null) {
-                if (result.title == item.title) {
-                    repository.updateToDo(
-                        ToDoItem(
-                            result.id,
-                            item.title,
-                            item.description,
-                            item.date
-                        )
-                    )
-                    return true
-                }
-            } else {
-                return false
 
-            }
-        }
-        return false
-
-    }
 }

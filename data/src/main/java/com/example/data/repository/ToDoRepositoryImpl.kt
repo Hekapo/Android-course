@@ -1,21 +1,27 @@
 package com.example.data.repository
 
-import com.example.data.mappers.ToDoMapper
+import com.example.data.mappers.mapEntityToToDoItem
+import com.example.data.mappers.mapToEntity
 import com.example.data.room.dao.ToDoDAO
 import com.example.domain.model.ToDoItem
 import com.example.domain.repository.ToDoRepository
 
 class ToDoRepositoryImpl(private val dao: ToDoDAO) : ToDoRepository {
 
-    override fun deleteToDo(toDoItem: ToDoItem) = dao.deleteToDo(ToDoMapper().toDoToEntity(toDoItem))
+    override fun deleteToDo(toDoItem: ToDoItem) =
+        dao.deleteToDo(toDoItem.mapToEntity())
 
-    override fun getOneToDo(id: Long?) = ToDoMapper().entityToToDo(dao.getOneToDo(id.toString()))
+    override fun getOneToDo(id: Long?) =
+        dao.getOneToDo(id.toString()).mapEntityToToDoItem()
 
-    override fun deleteAllToDo() = dao.deleteAllToDo()
+    override fun deleteAllToDo() =
+        dao.deleteAllToDo()
 
-    override fun addNewToDo(toDoItem: ToDoItem) = dao.addNewToDo(ToDoMapper().toDoToEntity(toDoItem))
+    override fun addNewToDo(toDoItem: ToDoItem) =
+        dao.addNewToDo(toDoItem.mapToEntity())
 
-    override fun updateToDo(toDoItem: ToDoItem) = dao.updateToDo(ToDoMapper().toDoToEntity(toDoItem))
+    override fun updateToDo(toDoItem: ToDoItem) =
+        dao.updateToDo(toDoItem.mapToEntity())
 
     override fun getAllToDo(): List<ToDoItem> {
         val list = mutableListOf<ToDoItem>()
@@ -26,12 +32,4 @@ class ToDoRepositoryImpl(private val dao: ToDoDAO) : ToDoRepository {
         return list
     }
 
-    override fun filter(title: String): ToDoItem? {
-        val item = dao.filtered(title)
-        if (item != null) {
-            return ToDoItem(item.id, item.title, item.description, item.date)
-        }
-        return null
-
-    }
 }

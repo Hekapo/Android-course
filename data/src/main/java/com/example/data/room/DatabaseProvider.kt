@@ -1,6 +1,5 @@
-package com.example.data
+package com.example.data.room
 
-import com.example.data.room.ToDoDatabase
 import com.example.data.room.dao.ToDoDAO
 
 interface DatabaseProvider {
