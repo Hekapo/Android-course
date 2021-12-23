@@ -4,15 +4,15 @@ import com.example.domain.model.ToDoItem
 
 interface ToDoRepository {
 
-    fun addNewToDo(toDoItem: ToDoItem): Long
+    suspend fun addNewToDo(toDoItem: ToDoItem): Long
 
-    fun updateToDo(toDoItem: ToDoItem): Int
+    suspend fun updateToDo(toDoItem: ToDoItem): Int
 
-    fun getAllToDo(): List<ToDoItem>
+    suspend fun getAllToDo(): List<ToDoItem>
 
-    fun deleteAllToDo()
+    suspend fun deleteAllToDo()
 
-    fun deleteToDo(toDoItem: ToDoItem)
+    suspend fun deleteToDo(toDoItem: ToDoItem)
 
-    fun getOneToDo(id: Long?): ToDoItem
+    suspend fun getOneToDo(id: Long?): ToDoItem
 }

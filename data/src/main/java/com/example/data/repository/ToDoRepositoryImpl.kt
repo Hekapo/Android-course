@@ -8,22 +8,22 @@ import com.example.domain.repository.ToDoRepository
 
 class ToDoRepositoryImpl(private val dao: ToDoDAO) : ToDoRepository {
 
-    override fun deleteToDo(toDoItem: ToDoItem) =
+    override suspend fun deleteToDo(toDoItem: ToDoItem) =
         dao.deleteToDo(toDoItem.mapToEntity())
 
-    override fun getOneToDo(id: Long?) =
+    override suspend fun getOneToDo(id: Long?) =
         dao.getOneToDo(id.toString()).mapEntityToToDoItem()
 
-    override fun deleteAllToDo() =
+    override suspend fun deleteAllToDo() =
         dao.deleteAllToDo()
 
-    override fun addNewToDo(toDoItem: ToDoItem) =
+    override suspend fun addNewToDo(toDoItem: ToDoItem) =
         dao.addNewToDo(toDoItem.mapToEntity())
 
-    override fun updateToDo(toDoItem: ToDoItem) =
+    override suspend fun updateToDo(toDoItem: ToDoItem) =
         dao.updateToDo(toDoItem.mapToEntity())
 
-    override fun getAllToDo(): List<ToDoItem> {
+    override suspend fun getAllToDo(): List<ToDoItem> {
         val list = mutableListOf<ToDoItem>()
         dao.getAllToDo().forEach {
             list.add(ToDoItem(it.id, it.title, it.description, it.date))

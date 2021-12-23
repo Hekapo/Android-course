@@ -1,16 +1,19 @@
 package com.example.firstlesson.presenter
 
-import com.example.data.room.DatabaseProvider
 import com.example.data.repository.BundleRepositoryImpl
 import com.example.data.repository.ToDoRepositoryImpl
+import com.example.data.room.DatabaseProvider
 import com.example.data.storage.BundleIdStorage
 import com.example.domain.model.ToDoItem
 import com.example.domain.usecase.*
 import com.example.firstlesson.view.ToDoListView
+import kotlinx.coroutines.*
 
 class ToDoListPresenter(
     private val toDoListView: ToDoListView,
-    private val databaseProvider: DatabaseProvider
+    private val databaseProvider: DatabaseProvider,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Main,
+    private val scope: CoroutineScope
 ) {
 
     private val bundleStorage by lazy { BundleIdStorage() }
@@ -35,14 +38,18 @@ class ToDoListPresenter(
     }
 
     fun loadToDo() {
-        val listToDo = getAllToDoUseCase.execute()
-
-        if (listToDo.isNotEmpty()) {
-            toDoListView.hideEmptyData()
-        } else {
-            toDoListView.showEmptyData()
+        var listToDo: List<ToDoItem>
+        scope.launch {
+            listToDo = getAllToDoUseCase.execute()
+            withContext(dispatcher) {
+                if (listToDo.isNotEmpty()) {
+                    toDoListView.hideEmptyData()
+                } else {
+                    toDoListView.showEmptyData()
+                }
+                toDoListView.showAllToDo(listToDo)
+            }
         }
-        toDoListView.showAllToDo(listToDo)
 
     }
 
@@ -52,21 +59,30 @@ class ToDoListPresenter(
     }
 
     fun deleteAll() {
-        deleteAllToDoUseCase.execute()
-        toDoListView.showAllToDo(emptyList())
-        toDoListView.showEmptyData()
+        scope.launch {
+            deleteAllToDoUseCase.execute()
+            withContext(dispatcher) {
+                toDoListView.showAllToDo(emptyList())
+                toDoListView.showEmptyData()
+
+            }
+        }
 
     }
 
     fun delete(toDoItem: ToDoItem) {
-        val listToDo = deleteOneToDoUseCase.execute(toDoItem)
-
-        if (listToDo.isNotEmpty()) {
-            toDoListView.hideEmptyData()
-        } else {
-            toDoListView.showEmptyData()
+        scope.launch {
+            val listToDo = deleteOneToDoUseCase.execute(toDoItem)
+            withContext(dispatcher) {
+                if (listToDo.isNotEmpty()) {
+                    toDoListView.hideEmptyData()
+                } else {
+                    toDoListView.showEmptyData()
+                }
+                toDoListView.showAllToDo(listToDo)
+            }
         }
-        toDoListView.showAllToDo(listToDo)
+
 
     }
 

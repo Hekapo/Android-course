@@ -35,7 +35,6 @@ abstract class ToDoDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context, ToDoDatabase::class.java, DATABASE_NAME)
-                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build()
     }

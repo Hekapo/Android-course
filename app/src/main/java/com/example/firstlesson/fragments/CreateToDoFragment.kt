@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.data.room.DatabaseProvider
 import com.example.data.room.ToDoDatabase
 import com.example.data.room.dao.ToDoDAO
 import com.example.domain.model.ToDoItem
 import com.example.firstlesson.databinding.FragmentCreateToDoBinding
 import com.example.firstlesson.presenter.CreateToDoPresenter
 import com.example.firstlesson.view.CreateToDoView
-import com.example.data.room.DatabaseProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import java.util.*
 
 class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
@@ -22,8 +25,10 @@ class CreateToDoFragment : Fragment(), CreateToDoView, DatabaseProvider {
         FragmentCreateToDoBinding.inflate(layoutInflater)
     }
 
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     private val presenter by lazy {
-        CreateToDoPresenter(this, this)
+        CreateToDoPresenter(this, this, scope = scope)
     }
 
     override fun onCreateView(

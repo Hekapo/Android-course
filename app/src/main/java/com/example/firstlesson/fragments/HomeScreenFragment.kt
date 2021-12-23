@@ -15,16 +15,21 @@ import com.example.firstlesson.databinding.FragmentHomeScreenBinding
 import com.example.firstlesson.presenter.ToDoListPresenter
 import com.example.firstlesson.utils.hideKeyboard
 import com.example.firstlesson.view.ToDoListView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 class HomeScreenFragment : Fragment(), ToDoAdapter.OnToDoClicked, ToDoListView,
     ToDoAdapter.OnToDoDelete, DatabaseProvider {
+
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private val todoAdapter by lazy {
         ToDoAdapter(requireContext(), this, this)
     }
 
     private val presenter by lazy {
-        ToDoListPresenter(this, this)
+        ToDoListPresenter(this, this, scope = scope)
     }
 
     private val binding: FragmentHomeScreenBinding by lazy(LazyThreadSafetyMode.NONE) {

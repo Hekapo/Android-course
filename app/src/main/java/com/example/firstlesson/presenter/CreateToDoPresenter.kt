@@ -9,11 +9,14 @@ import com.example.domain.usecase.GetOneToDoUseCase
 import com.example.domain.usecase.SaveToDoUseCase
 import com.example.domain.usecase.UpdateToDoUseCase
 import com.example.firstlesson.view.CreateToDoView
+import kotlinx.coroutines.*
 import java.util.*
 
 class CreateToDoPresenter(
     private val createToDoView: CreateToDoView,
-    private val databaseProvider: DatabaseProvider
+    private val databaseProvider: DatabaseProvider,
+    private val scope: CoroutineScope,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Main
 ) {
 
     private val repository by lazy {
@@ -41,24 +44,39 @@ class CreateToDoPresenter(
         if (id == 0L) {
             createToDoView.showCreateButton()
         } else {
-            val result = getOneToDoUseCase.execute(id)
-            createToDoView.showUpdateButton()
-            createToDoView.setInitialText(result)
+            scope.launch {
+                val result = getOneToDoUseCase.execute(id)
+                withContext(dispatcher) {
+                    createToDoView.showUpdateButton()
+                    createToDoView.setInitialText(result)
+
+                }
+
+            }
         }
 
         return id
     }
 
     fun updateToDo(title: String, desc: String, args: Long?, date: Date) {
-        updateToDoUseCase.execute(title, desc, args, date)
-        createToDoView.navigateBack()
+        scope.launch {
+            updateToDoUseCase.execute(title, desc, args, date)
+            withContext(dispatcher) {
+                createToDoView.navigateBack()
+            }
+        }
     }
 
     fun createToDo(title: String, desc: String, date: Date) {
-        if (saveToDoUseCase.execute(title, desc, date)) {
-            createToDoView.navigateBack()
-        } else {
-            createToDoView.showToast("invalid input")
+        scope.launch {
+            val saved = saveToDoUseCase.execute(title, desc, date)
+            withContext(dispatcher) {
+                if (saved) {
+                    createToDoView.navigateBack()
+                } else {
+                    createToDoView.showToast("invalid input")
+                }
+            }
         }
     }
 }

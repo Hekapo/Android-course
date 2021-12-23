@@ -6,8 +6,7 @@ import java.util.*
 
 class UpdateToDoUseCase(private val repository: ToDoRepository) {
 
-    fun execute(title: String, desc: String, id: Long?, date: Date) =
+    suspend fun execute(title: String, desc: String, id: Long?, date: Date) =
         id?.let { ToDoItem(it, title, desc, date) }?.let { repository.updateToDo(it) }
-
 
 }

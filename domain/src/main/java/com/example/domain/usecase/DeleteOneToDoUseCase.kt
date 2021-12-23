@@ -5,7 +5,7 @@ import com.example.domain.repository.ToDoRepository
 
 class DeleteOneToDoUseCase(private val repository: ToDoRepository) {
 
-    fun execute(toDoItem: ToDoItem): List<ToDoItem> {
+    suspend fun execute(toDoItem: ToDoItem): List<ToDoItem> {
         repository.deleteToDo(toDoItem)
         return repository.getAllToDo()
     }
