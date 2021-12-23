@@ -3,8 +3,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        jcenter() // Warning: this com.example.data.repository is going to shut down soon
     }
 }
 rootProject.name = "FirstLesson"
 include ':app'
+include ':domain'
+include ':data'
