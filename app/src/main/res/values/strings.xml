@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">FirstLesson</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nothing_to_show_add_a_new_task">Nothing to show, add a new task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="update_todo">Update todo</string>
+    <string name="create_todo">Create todo</string>
+    <string name="delete_all_todo">delete all todo</string>
 </resources>
